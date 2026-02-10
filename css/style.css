@@ -1,1 +1,871 @@
+/* ==========================================
+   VARIABLES CSS
+   ========================================== */
+:root {
+    --nebula-purple: #8B5CF6;
+    --cosmic-blue: #3B82F6;
+    --star-cyan: #06B6D4;
+    --deep-space: #0F0F23;
+    --dark-matter: #1A1A2E;
+    --galaxy-pink: #EC4899;
+    --stellar-gold: #F59E0B;
+    --space-white: #F8FAFC;
+}
 
+/* ==========================================
+   RESET Y ESTILOS GENERALES
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Exo 2', sans-serif;
+    background: var(--deep-space);
+    color: var(--space-white);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   BOTÓN FLOTANTE DE WHATSAPP
+   ========================================== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    z-index: 9999;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: pulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-icon {
+    width: 35px;
+    height: 35px;
+    color: white;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        box-shadow: 0 8px 35px rgba(37, 211, 102, 0.7);
+    }
+}
+
+/* ==========================================
+   HERO SECTION CON VIDEO
+   ========================================== */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 6rem 2rem 4rem;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.5), rgba(59, 130, 246, 0.4), rgba(236, 72, 153, 0.5));
+    z-index: 2;
+}
+
+.video-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(15, 15, 35, 0.85) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    animation: fadeInUp 1.2s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-text {
+    flex: 1;
+    max-width: 700px;
+}
+
+.hero-image {
+    flex-shrink: 0;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--nebula-purple), var(--star-cyan), var(--galaxy-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    animation: glow 2s ease-in-out infinite alternate;
+    line-height: 1.1;
+}
+
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.5));
+    }
+    to {
+        filter: drop-shadow(0 0 40px rgba(139, 92, 246, 0.8));
+    }
+}
+
+.subtitle {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    color: var(--star-cyan);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+.description {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(248, 250, 252, 0.9);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.hero-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.skill-badge {
+    padding: 0.6rem 1.2rem;
+    background: rgba(139, 92, 246, 0.2);
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    border-radius: 25px;
+    font-size: 0.9rem;
+    color: var(--star-cyan);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.skill-badge:hover {
+    background: rgba(139, 92, 246, 0.3);
+    border-color: var(--nebula-purple);
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   FOTO DE PERFIL (Lado Derecho)
+   ========================================== */
+.profile-image-container {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.profile-image-container::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--nebula-purple), var(--cosmic-blue), var(--galaxy-pink), var(--star-cyan));
+    animation: rotate 4s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid var(--deep-space);
+    box-shadow: 0 20px 60px rgba(139, 92, 246, 0.6);
+}
+
+/* ==========================================
+   NAVEGACIÓN
+   ========================================== */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(15, 15, 35, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+    transform: translateY(-100%);
+    animation: slideDown 0.5s ease-out 0.5s forwards;
+}
+
+@keyframes slideDown {
+    to {
+        transform: translateY(0);
+    }
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--space-white);
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--nebula-purple), var(--star-cyan));
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a:hover {
+    color: var(--star-cyan);
+}
+
+/* ==========================================
+   SECCIÓN DE PROYECTOS
+   ========================================== */
+.projects-section {
+    padding: 6rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, var(--deep-space) 0%, var(--dark-matter) 100%);
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-align: center;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--nebula-purple), var(--star-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: rgba(248, 250, 252, 0.7);
+    margin-bottom: 4rem;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.project-card {
+    background: rgba(26, 26, 46, 0.6);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    opacity: 0;
+    animation: fadeInProject 0.8s ease-out forwards;
+}
+
+@keyframes fadeInProject {
+    to {
+        opacity: 1;
+    }
+}
+
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.2s; }
+.project-card:nth-child(3) { animation-delay: 0.3s; }
+.project-card:nth-child(4) { animation-delay: 0.4s; }
+.project-card:nth-child(5) { animation-delay: 0.5s; }
+.project-card:nth-child(6) { animation-delay: 0.6s; }
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--nebula-purple);
+    box-shadow: 0 25px 50px rgba(139, 92, 246, 0.3);
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.project-image-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.1);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(15, 15, 35, 0.9) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-content {
+    padding: 2rem;
+}
+
+.project-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--star-cyan);
+}
+
+.project-description {
+    color: rgba(248, 250, 252, 0.8);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tech-tag {
+    background: rgba(139, 92, 246, 0.2);
+    color: var(--nebula-purple);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.project-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, var(--nebula-purple), var(--cosmic-blue));
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.project-button:hover::before {
+    left: 100%;
+}
+
+.project-button:hover {
+    transform: translateX(5px);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.5);
+}
+
+/* ==========================================
+   SECCIÓN DE HABILIDADES
+   ========================================== */
+.skills-section {
+    padding: 6rem 2rem;
+    background: var(--dark-matter);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 3rem auto 0;
+}
+
+.skill-item {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: rgba(139, 92, 246, 0.1);
+    border-radius: 15px;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInProject 0.8s ease-out forwards;
+}
+
+.skill-item:hover {
+    background: rgba(139, 92, 246, 0.2);
+    transform: translateY(-5px);
+    border-color: var(--nebula-purple);
+}
+
+.skill-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.skill-name {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    color: var(--star-cyan);
+}
+
+/* ==========================================
+   CONTACTO
+   ========================================== */
+.contact-section {
+    padding: 6rem 2rem;
+    background: linear-gradient(180deg, var(--dark-matter) 0%, var(--deep-space) 100%);
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 2rem;
+    background: rgba(26, 26, 46, 0.8);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 50px;
+    color: var(--space-white);
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: rgba(139, 92, 246, 0.2);
+    border-color: var(--nebula-purple);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* ==========================================
+   SECCIÓN DE DESCARGA
+   ========================================== */
+.download-section {
+    padding: 6rem 2rem;
+    background: linear-gradient(135deg, var(--dark-matter) 0%, var(--deep-space) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.download-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(139, 92, 246, 0.15), transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(59, 130, 246, 0.15), transparent 50%);
+    pointer-events: none;
+}
+
+.download-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.download-content {
+    text-align: center;
+    background: rgba(26, 26, 46, 0.6);
+    padding: 4rem 3rem;
+    border-radius: 30px;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
+}
+
+.download-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    background: linear-gradient(135deg, var(--nebula-purple), var(--star-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+}
+
+.download-description {
+    color: rgba(248, 250, 252, 0.8);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.download-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 3rem;
+    background: linear-gradient(135deg, var(--nebula-purple), var(--cosmic-blue));
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(139, 92, 246, 0.4);
+}
+
+.download-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.download-button:hover::before {
+    left: 100%;
+}
+
+.download-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 50px rgba(139, 92, 246, 0.6);
+}
+
+.download-icon {
+    width: 28px;
+    height: 28px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.download-note {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: rgba(248, 250, 252, 0.6);
+    font-style: italic;
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+footer {
+    padding: 2rem;
+    text-align: center;
+    background: var(--deep-space);
+    border-top: 1px solid rgba(139, 92, 246, 0.2);
+    color: rgba(248, 250, 252, 0.6);
+}
+
+/* ==========================================
+   ESTRELLAS DE FONDO
+   ========================================== */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .hero-content {
+        gap: 3rem;
+    }
+    
+    .profile-image-container {
+        width: 240px;
+        height: 240px;
+    }
+}
+
+/* Móviles grandes */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .hero-text {
+        max-width: 100%;
+    }
+    
+    .hero-skills {
+        justify-content: center;
+    }
+    
+    .profile-image-container {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    nav ul {
+        gap: 1rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+    }
+    
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .whatsapp-icon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .hero {
+        padding: 5rem 1rem 3rem;
+    }
+    
+    .profile-image-container {
+        width: 180px;
+        height: 180px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .description {
+        font-size: 1rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    nav {
+        padding: 0.8rem 1rem;
+    }
+    
+    nav ul {
+        gap: 0.8rem;
+    }
+    
+    nav a {
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .whatsapp-icon {
+        width: 28px;
+        height: 28px;
+    }
+}
